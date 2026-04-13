@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Systematic Trading Framework project details by Foivos Georgios Ampatzis."
+    />
+    <title>Systematic Trading Framework | Foivos Georgios Ampatzis</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Project navigation">
+        <a class="nav-logo" href="index.html" aria-label="Back to portfolio home">FGA</a>
+        <div class="nav-actions">
+          <div class="nav-links">
+            <a href="#overview">Overview</a>
+            <a href="#results">Results</a>
+            <a href="#diagnostics">Diagnostics</a>
+            <a href="#implementation">Implementation</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+            Dark
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="detail-hero section-block" id="overview" aria-labelledby="project-title">
+        <div class="container detail-hero-grid">
+          <div class="reveal">
+            <a class="back-link" href="index.html#projects">Back to projects</a>
+            <p class="eyebrow">Quant Research / ML Engineering</p>
+            <h1 id="project-title">Systematic Trading Framework</h1>
+            <p class="hero-title">Python | ML | Backtesting | Quant</p>
+            <p class="hero-tagline">
+              A research-first framework for systematic trading experiments,
+              designed around modular features, models, experiments, risk, signals,
+              portfolio construction, monitoring, and execution layers.
+            </p>
+            <div class="hero-actions" aria-label="Project actions">
+              <a class="btn btn-primary" href="https://github.com/AFoivos/systematic_trading_framework/tree/main" target="_blank" rel="noreferrer">View Repository</a>
+              <a class="btn btn-secondary" href="#results">View Results</a>
+            </div>
+          </div>
+
+          <aside class="hero-panel reveal" aria-label="Experiment summary">
+            <p class="panel-label">Experiment Snapshot</p>
+            <div class="metric-row">
+              <span>Market / Timeframe</span>
+              <strong>BTCUSD 1H</strong>
+            </div>
+            <div class="metric-row">
+              <span>Model Family</span>
+              <strong>Shock meta XGBoost</strong>
+            </div>
+            <div class="metric-row">
+              <span>Direction</span>
+              <strong>Long-only workflow</strong>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-block" aria-labelledby="summary-title">
+        <div class="container two-column reveal">
+          <div class="section-heading compact">
+            <p class="eyebrow">Project Summary</p>
+            <h2 id="summary-title">A modular research pipeline for time-aware strategy evaluation.</h2>
+          </div>
+          <div class="text-panel">
+            <p>
+              The framework is built for hypothesis-driven quantitative research:
+              feature engineering, labeling, model experimentation, backtesting,
+              transaction-cost handling, risk logic, signal generation, and portfolio
+              construction are separated into explicit layers.
+            </p>
+            <p>
+              The experiment shown here is a BTCUSD 1H long-only workflow using a
+              shock meta XGBoost setup. The plots are generated report artifacts
+              used to review performance, drawdown, transaction-cost drag, model
+              drivers, signal behavior, and label balance.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block results-section" id="results" aria-labelledby="results-title">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Results</p>
+            <h2 id="results-title">Performance, risk, and cost behavior</h2>
+            <p>
+              The first group of charts focuses on equity progression, gross versus
+              net returns, drawdown behavior, and the cumulative impact of costs.
+            </p>
+          </div>
+
+          <div class="chart-grid">
+            <figure class="chart-card chart-card-wide reveal">
+              <img src="assets/systematic-trading-framework/equity_curve.png" alt="Equity curve for the systematic trading framework experiment" />
+              <figcaption>Equity curve used to inspect capital progression through the experiment window.</figcaption>
+            </figure>
+
+            <figure class="chart-card reveal">
+              <img src="assets/systematic-trading-framework/cumulative_returns.png" alt="Cumulative gross versus net returns chart" />
+              <figcaption>Gross versus net cumulative returns, showing the effect of costs on realized performance.</figcaption>
+            </figure>
+
+            <figure class="chart-card reveal">
+              <img src="assets/systematic-trading-framework/drawdown_curve.png" alt="Drawdown curve for the strategy experiment" />
+              <figcaption>Drawdown curve used to evaluate risk, underwater periods, and recovery behavior.</figcaption>
+            </figure>
+
+            <figure class="chart-card reveal">
+              <img src="assets/systematic-trading-framework/cumulative_cost_drag.png" alt="Cumulative cost drag chart" />
+              <figcaption>Cumulative cost drag, included to keep transaction-cost impact explicit in the review.</figcaption>
+            </figure>
+
+            <figure class="chart-card reveal">
+              <img src="assets/systematic-trading-framework/monthly_returns.png" alt="Monthly gross versus net returns chart" />
+              <figcaption>Monthly gross versus net returns for a compact view of period-level contribution.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block" id="diagnostics" aria-labelledby="diagnostics-title">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Diagnostics</p>
+            <h2 id="diagnostics-title">Model drivers, labels, and trading behavior</h2>
+            <p>
+              Diagnostics focus on whether the experiment is interpretable enough
+              to review: feature importance, out-of-sample label balance, signal
+              turnover, and rolling behavior are treated as part of the research
+              artifact, not as afterthoughts.
+            </p>
+          </div>
+
+          <div class="chart-grid">
+            <figure class="chart-card chart-card-wide reveal">
+              <img src="assets/systematic-trading-framework/feature_importance.png" alt="Feature importance chart for the XGBoost experiment" />
+              <figcaption>Feature importance review for the shock meta XGBoost experiment.</figcaption>
+            </figure>
+
+            <figure class="chart-card reveal">
+              <img src="assets/systematic-trading-framework/label_distribution.png" alt="Out-of-sample label distribution chart" />
+              <figcaption>Out-of-sample label distribution, used to inspect class balance and target structure.</figcaption>
+            </figure>
+
+            <figure class="chart-card reveal">
+              <img src="assets/systematic-trading-framework/positions_turnover.png" alt="Signal and turnover path chart" />
+              <figcaption>Signal and turnover path, useful for checking position churn and trading frequency.</figcaption>
+            </figure>
+
+            <figure class="chart-card chart-card-wide reveal">
+              <img src="assets/systematic-trading-framework/rolling_behavior.png" alt="Rolling behavior chart for mean absolute signal and turnover" />
+              <figcaption>Rolling signal and turnover behavior for stability and regime review.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block" id="implementation" aria-labelledby="implementation-title">
+        <div class="container two-column reveal">
+          <div class="section-heading compact">
+            <p class="eyebrow">Implementation</p>
+            <h2 id="implementation-title">Design decisions emphasized by the framework.</h2>
+          </div>
+          <div class="text-panel">
+            <ul class="info-list">
+              <li>Modular layers for features, models, experiments, backtesting, risk, signals, portfolio construction, monitoring, and execution.</li>
+              <li>Time-aware evaluation with walk-forward logic, out-of-sample testing, purged split support, and transaction-cost-aware backtesting.</li>
+              <li>Unified experimentation workflow for statistical models, machine learning models, deep learning architectures, and reinforcement learning agents.</li>
+              <li>Research artifacts designed to make model behavior, risk, costs, and signal quality reviewable before treating results as meaningful.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="container contact-panel reveal">
+          <div class="section-heading compact">
+            <p class="eyebrow">Repository</p>
+            <h2 id="contact-title">Project source and portfolio navigation</h2>
+            <p>
+              This page summarizes one experiment report from the broader framework.
+              The charts are project artifacts, not investment advice.
+            </p>
+          </div>
+          <div class="contact-links">
+            <a href="index.html#projects">Portfolio</a>
+            <a href="https://github.com/AFoivos/systematic_trading_framework/tree/main" target="_blank" rel="noreferrer">GitHub Repository</a>
+            <a href="mailto:ampatzisfoivos@gmail.com">Email</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>&copy; 2026 Foivos Georgios Ampatzis</p>
+        <div class="footer-links">
+          <a href="index.html#projects">Projects</a>
+          <a href="https://github.com/AFoivos/systematic_trading_framework/tree/main" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="mailto:ampatzisfoivos@gmail.com">Email</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
