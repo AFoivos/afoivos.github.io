@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,7 +16,12 @@
       <nav class="nav container" aria-label="Project navigation">
         <a class="nav-logo" href="index.html" aria-label="Back to portfolio home">FGA</a>
         <div class="nav-actions">
-          <div class="nav-links">
+          <button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="project-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="nav-links" id="project-menu">
             <a href="#overview">Overview</a>
             <a href="#results">Results</a>
             <a href="#diagnostics">Diagnostics</a>

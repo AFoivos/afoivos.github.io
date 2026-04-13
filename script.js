@@ -2,6 +2,8 @@ const root = document.documentElement;
 document.body.classList.add("js-enabled");
 
 const themeToggle = document.querySelector(".theme-toggle");
+const menuToggle = document.querySelector(".menu-toggle");
+const navActions = document.querySelector(".nav-actions");
 const navLinks = Array.from(document.querySelectorAll(".nav-links a"));
 const revealItems = Array.from(document.querySelectorAll(".reveal"));
 
@@ -22,8 +24,7 @@ function storeTheme(theme) {
 }
 
 const storedTheme = getStoredTheme();
-const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
-const initialTheme = storedTheme || (prefersDark ? "dark" : "light");
+const initialTheme = storedTheme || "dark";
 
 function setTheme(theme) {
   root.dataset.theme = theme;
@@ -40,6 +41,26 @@ setTheme(initialTheme);
 themeToggle?.addEventListener("click", () => {
   const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
   setTheme(nextTheme);
+});
+
+function closeMenu() {
+  navActions?.classList.remove("is-open");
+  menuToggle?.setAttribute("aria-expanded", "false");
+}
+
+menuToggle?.addEventListener("click", () => {
+  const isOpen = navActions?.classList.toggle("is-open") ?? false;
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", closeMenu);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeMenu();
+  }
 });
 
 if ("IntersectionObserver" in window) {
