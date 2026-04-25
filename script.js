@@ -1,47 +1,9 @@
-const root = document.documentElement;
 document.body.classList.add("js-enabled");
 
-const themeToggle = document.querySelector(".theme-toggle");
 const menuToggle = document.querySelector(".menu-toggle");
 const navActions = document.querySelector(".nav-actions");
 const navLinks = Array.from(document.querySelectorAll(".nav-links a"));
 const revealItems = Array.from(document.querySelectorAll(".reveal"));
-
-function getStoredTheme() {
-  try {
-    return localStorage.getItem("theme");
-  } catch {
-    return null;
-  }
-}
-
-function storeTheme(theme) {
-  try {
-    localStorage.setItem("theme", theme);
-  } catch {
-    return;
-  }
-}
-
-const storedTheme = getStoredTheme();
-const initialTheme = storedTheme || "dark";
-
-function setTheme(theme) {
-  root.dataset.theme = theme;
-  storeTheme(theme);
-
-  if (themeToggle) {
-    themeToggle.textContent = theme === "dark" ? "Light" : "Dark";
-    themeToggle.setAttribute("aria-pressed", String(theme === "dark"));
-  }
-}
-
-setTheme(initialTheme);
-
-themeToggle?.addEventListener("click", () => {
-  const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
-  setTheme(nextTheme);
-});
 
 function closeMenu() {
   navActions?.classList.remove("is-open");
