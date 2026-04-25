@@ -312,6 +312,10 @@ ul {
 .experience-card,
 .education-card,
 .certification-card,
+.process-card,
+.code-card,
+.table-card,
+.metric-card,
 .contact-panel {
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -936,6 +940,106 @@ ul {
   font-size: 0.92rem;
 }
 
+.process-grid,
+.metrics-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.process-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.process-card,
+.code-card,
+.table-card,
+.metric-card {
+  padding: 24px;
+}
+
+.process-card span,
+.metric-card span {
+  display: block;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.process-card h3,
+.code-card h3,
+.table-card h3 {
+  margin: 10px 0 0;
+  color: var(--text-strong);
+  font-size: 1.1rem;
+}
+
+.process-card p {
+  margin: 12px 0 0;
+  color: var(--muted);
+}
+
+.process-card strong,
+.metric-card strong {
+  display: block;
+  margin-top: 14px;
+  color: var(--text-strong);
+}
+
+.metrics-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 22px 0;
+}
+
+.metric-card strong {
+  font-size: 1.5rem;
+}
+
+.code-card {
+  margin-bottom: 22px;
+}
+
+.code-card pre {
+  overflow-x: auto;
+  margin: 16px 0 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-soft);
+  color: var(--text-strong);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.table-card {
+  margin: 22px 0;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 16px;
+}
+
+.table-card table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--text);
+  font-size: 0.92rem;
+}
+
+.table-card th,
+.table-card td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.table-card th {
+  color: var(--text-strong);
+  font-weight: 800;
+}
+
 .contact-section {
   padding-top: 44px;
 }
@@ -1067,7 +1171,8 @@ ul {
   }
 
   .projects-grid,
-  .skills-grid {
+  .skills-grid,
+  .process-grid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -1182,6 +1287,8 @@ ul {
 
   .projects-grid,
   .skills-grid,
+  .process-grid,
+  .metrics-grid,
   .chart-grid,
   .certifications-grid {
     grid-template-columns: 1fr;
@@ -1215,6 +1322,10 @@ ul {
   .experience-card,
   .education-card,
   .certification-card,
+  .process-card,
+  .code-card,
+  .table-card,
+  .metric-card,
   .contact-panel,
   .hero-panel {
     padding: 22px;

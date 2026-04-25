@@ -15,7 +15,7 @@ Currently working as a **Data Operations Specialist at Talis A.E.**, focused on 
 - [Systematic Trading Framework](https://github.com/AFoivos/systematic_trading_framework/tree/main)
   Research-first systematic trading framework for quantitative finance, including modular feature engineering, models, experiments, backtesting, risk, signals, portfolio construction, monitoring, and execution layers.
 
-- [Credit Card Fraud Detection](https://github.com/AFoivos/Credit-Card-Fraud-Detection)
+- [Bank Transaction Fraud Detection](https://github.com/AFoivos/Fraud-Detection/tree/main)
   End-to-end suspicious transaction detection pipeline using data cleaning, preprocessing, EDA, z-score anomaly flagging, Isolation Forest, and RandomForestClassifier.
 
 - [EUR/USD Analysis & Forecasting Project](https://github.com/AFoivos/Eur.usd_Analysis)
@@ -39,9 +39,11 @@ Currently working as a **Data Operations Specialist at Talis A.E.**, focused on 
 
 - `index.html` - main portfolio content
 - `systematic-trading-framework.html` - detailed project page with experiment plots and methodology notes
+- `fraud-detection.html` - detailed project page with notebook workflow, EDA plots, model results, and data artifacts
 - `style.css` - responsive styling, theme tokens, project cards, layout rules
 - `script.js` - dark mode toggle, active navigation, minimal reveal-on-scroll behavior
 - `assets/systematic-trading-framework/` - selected report assets used by the Systematic Trading Framework detail page
+- `assets/fraud-detection/` - selected EDA and modeling assets used by the Fraud Detection detail page
 
 ## Local Development
 

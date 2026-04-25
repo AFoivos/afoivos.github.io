@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Fraud Detection project details by Foivos Georgios Ampatzis."
+    />
+    <title>Fraud Detection | Foivos Georgios Ampatzis</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Project navigation">
+        <a class="nav-logo" href="index.html" aria-label="Back to portfolio home">FGA</a>
+        <div class="nav-actions">
+          <button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="fraud-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="nav-links" id="fraud-menu">
+            <a href="#overview">Overview</a>
+            <a href="#workflow">Workflow</a>
+            <a href="#eda">EDA</a>
+            <a href="#modeling">Modeling</a>
+            <a href="#artifacts">Artifacts</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+            Dark
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="detail-hero section-block" id="overview" aria-labelledby="project-title">
+        <div class="container detail-hero-grid">
+          <div class="reveal">
+            <a class="back-link" href="index.html#projects">Back to projects</a>
+            <p class="eyebrow">Anomaly Detection / Fraud Analytics</p>
+            <h1 id="project-title">Bank Transaction Fraud Detection</h1>
+            <p class="hero-title">Python | EDA | Isolation Forest | Random Forest</p>
+            <p class="hero-tagline">
+              End-to-end suspicious banking transaction detection workflow combining
+              data cleaning, exploratory analysis, statistical flags, unsupervised
+              anomaly detection, and supervised modeling.
+            </p>
+            <div class="hero-actions" aria-label="Project actions">
+              <a class="btn btn-primary" href="https://github.com/AFoivos/Fraud-Detection/tree/main" target="_blank" rel="noreferrer">View Repository</a>
+              <a class="btn btn-secondary" href="#modeling">View Results</a>
+            </div>
+          </div>
+
+          <aside class="hero-panel reveal" aria-label="Project snapshot">
+            <p class="panel-label">Project Snapshot</p>
+            <div class="metric-row">
+              <span>Raw dataset</span>
+              <strong>2,512 transactions</strong>
+            </div>
+            <div class="metric-row">
+              <span>Final anomalies</span>
+              <strong>947 suspicious records</strong>
+            </div>
+            <div class="metric-row">
+              <span>Pipeline</span>
+              <strong>5 notebooks</strong>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-block" aria-labelledby="summary-title">
+        <div class="container two-column reveal">
+          <div class="section-heading compact">
+            <p class="eyebrow">Project Summary</p>
+            <h2 id="summary-title">A complete fraud detection pipeline from raw transactions to anomaly extract.</h2>
+          </div>
+          <div class="text-panel">
+            <p>
+              The project starts from `data/bank_transactions_data.csv`, a dataset
+              with 2,512 banking transaction records and fields such as transaction
+              dates, amounts, merchant identifiers, device information, login
+              attempts, account balance, and related transaction metadata.
+            </p>
+            <p>
+              The workflow enriches the raw dataset with engineered features,
+              behavioral flags, z-score flags, Isolation Forest labels, and a final
+              anomaly target used to extract suspicious transactions for review.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block results-section" id="workflow" aria-labelledby="workflow-title">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Workflow</p>
+            <h2 id="workflow-title">Notebook-by-notebook pipeline</h2>
+            <p>
+              The repository is organized into five notebooks. Each notebook adds a
+              specific layer to the pipeline and writes a downstream data artifact.
+            </p>
+          </div>
+
+          <div class="process-grid">
+            <article class="process-card reveal">
+              <span>01</span>
+              <h3>Data understanding &amp; cleaning</h3>
+              <p>Quality checks, duplicate removal, date conversion, label encoding, MinMax scaling, `time_diff`, and `location_change`.</p>
+              <strong>Output: data/clean_transactions_data.csv</strong>
+            </article>
+            <article class="process-card reveal">
+              <span>02</span>
+              <h3>Exploratory data analysis</h3>
+              <p>Distribution checks, outlier review, correlations, hourly activity, and behavioral suspicious flags.</p>
+              <strong>Output: data/clean_transactions_with_flags.csv</strong>
+            </article>
+            <article class="process-card reveal">
+              <span>03</span>
+              <h3>Statistical methods</h3>
+              <p>Z-score calculations on selected numeric fields and binary flags using the `abs(z) > 3` rule.</p>
+              <strong>Output: data/transactions_with_zscores.csv</strong>
+            </article>
+            <article class="process-card reveal">
+              <span>04</span>
+              <h3>Isolation Forest</h3>
+              <p>Unsupervised anomaly detection and combined final anomaly flag generation from rule-based and model-based signals.</p>
+              <strong>Output: data/transactions_with_all_flags_final.csv.csv</strong>
+            </article>
+            <article class="process-card reveal">
+              <span>05</span>
+              <h3>Supervised anomaly model</h3>
+              <p>Stratified train/test split, RandomForestClassifier, classification report, confusion matrix, and feature importance review.</p>
+              <strong>Output: transactions_anomalies_only.csv</strong>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block" id="eda" aria-labelledby="eda-title">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">EDA</p>
+            <h2 id="eda-title">Exploratory analysis and rule-building context</h2>
+            <p>
+              The exploratory phase is used to understand distributions, identify
+              outliers, inspect merchant behavior, and build practical fraud flags
+              before model training.
+            </p>
+          </div>
+
+          <div class="chart-grid">
+            <figure class="chart-card chart-card-wide reveal">
+              <img src="assets/fraud-detection/numerical_feature_distributions.png" alt="Distribution of numerical features" />
+              <figcaption>Numerical feature distributions for amount, age, transaction duration, login attempts, balance, and time difference.</figcaption>
+            </figure>
+
+            <figure class="chart-card reveal">
+              <img src="assets/fraud-detection/transaction_amount_boxplot.png" alt="Transaction amount boxplot" />
+              <figcaption>Transaction amount boxplot used to inspect heavy right-tail behavior and candidate high-value outliers.</figcaption>
+            </figure>
+
+            <figure class="chart-card reveal">
+              <img src="assets/fraud-detection/duration_amount_scatter.png" alt="Scatter plot of transaction duration versus amount by type" />
+              <figcaption>Transaction duration versus amount by transaction type, used to inspect spread and interaction patterns.</figcaption>
+            </figure>
+
+            <figure class="chart-card reveal">
+              <img src="assets/fraud-detection/transaction_type_amount_boxplot.png" alt="Transaction amount by transaction type" />
+              <figcaption>Transaction amount split by transaction type, showing distribution and outlier structure across classes.</figcaption>
+            </figure>
+
+            <figure class="chart-card reveal">
+              <img src="assets/fraud-detection/merchant_distribution.png" alt="Distribution of transactions by merchant ID" />
+              <figcaption>Transaction counts by MerchantID, used to inspect merchant concentration and coverage.</figcaption>
+            </figure>
+
+            <figure class="chart-card reveal">
+              <img src="assets/fraud-detection/merchant_transaction_amount_boxplot.png" alt="Transaction amount by top merchant ID" />
+              <figcaption>Transaction amount distribution across top merchants, used for merchant-level suspicious behavior review.</figcaption>
+            </figure>
+
+            <figure class="chart-card reveal">
+              <img src="assets/fraud-detection/merchant_average_features_heatmap.png" alt="Average features per merchant ID heatmap" />
+              <figcaption>Average feature heatmap by merchant, showing differences in transaction duration, login attempts, balance, and timing.</figcaption>
+            </figure>
+
+            <figure class="chart-card reveal">
+              <img src="assets/fraud-detection/numerical_correlation_matrix.png" alt="Correlation matrix of numerical features" />
+              <figcaption>Correlation matrix for numerical features, used to inspect relationships before modeling.</figcaption>
+            </figure>
+
+            <figure class="chart-card reveal">
+              <img src="assets/fraud-detection/outlier_correlation_heatmap.png" alt="Correlation heatmap of outlier-related fields" />
+              <figcaption>Correlation heatmap for outlier-related fields, used to review whether suspicious dimensions move together.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block results-section" id="modeling" aria-labelledby="modeling-title">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Modeling</p>
+            <h2 id="modeling-title">Isolation Forest, final flags, and supervised validation</h2>
+            <p>
+              The modeling stage combines statistical flags, behavioral rules,
+              unsupervised anomaly detection, and supervised Random Forest
+              classification to produce and validate the final anomaly extract.
+            </p>
+          </div>
+
+          <div class="code-card reveal">
+            <h3>Isolation Forest setup</h3>
+            <pre><code>iso_model = IsolationForest(n_estimators=100, contamination="auto", random_state=42)
+df["isolation_pred"] = iso_model.fit_predict(X)
+df["isolation_outlier_label"] = (df["isolation_pred"] == -1).astype(int)</code></pre>
+          </div>
+
+          <div class="metrics-grid">
+            <article class="metric-card reveal">
+              <span>Final non-anomalies</span>
+              <strong>1,565</strong>
+            </article>
+            <article class="metric-card reveal">
+              <span>Final anomalies</span>
+              <strong>947</strong>
+            </article>
+            <article class="metric-card reveal">
+              <span>Final extract</span>
+              <strong>947 rows</strong>
+            </article>
+          </div>
+
+          <div class="table-card reveal">
+            <h3>Top flag performance versus strong anomaly label</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Flag</th>
+                    <th>Precision</th>
+                    <th>Recall</th>
+                    <th>F1</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>amount_exceeds_balance</td>
+                    <td>1.000</td>
+                    <td>0.772</td>
+                    <td>0.871</td>
+                  </tr>
+                  <tr>
+                    <td>suspicious_merchant_flag</td>
+                    <td>1.000</td>
+                    <td>0.153</td>
+                    <td>0.266</td>
+                  </tr>
+                  <tr>
+                    <td>high_amount_flag</td>
+                    <td>1.000</td>
+                    <td>0.145</td>
+                    <td>0.253</td>
+                  </tr>
+                  <tr>
+                    <td>many_login_attempts_flag</td>
+                    <td>1.000</td>
+                    <td>0.129</td>
+                    <td>0.228</td>
+                  </tr>
+                  <tr>
+                    <td>flag_zscore_LoginAttempts</td>
+                    <td>1.000</td>
+                    <td>0.100</td>
+                    <td>0.182</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="chart-grid">
+            <figure class="chart-card reveal">
+              <img src="assets/fraud-detection/confusion_matrix.png" alt="Random Forest confusion matrix" />
+              <figcaption>Random Forest confusion matrix from the supervised anomaly model evaluation.</figcaption>
+            </figure>
+
+            <figure class="chart-card reveal">
+              <img src="assets/fraud-detection/feature_importances.png" alt="Random Forest feature importances" />
+              <figcaption>Feature importances from the supervised model, highlighting amount-to-balance ratio and balance-exceeding flags.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block" id="artifacts" aria-labelledby="artifacts-title">
+        <div class="container two-column reveal">
+          <div class="section-heading compact">
+            <p class="eyebrow">Data Artifacts</p>
+            <h2 id="artifacts-title">Generated datasets across the pipeline.</h2>
+          </div>
+          <div class="text-panel">
+            <ul class="info-list">
+              <li>`data/bank_transactions_data.csv`: raw dataset with 2,512 rows and 16 columns.</li>
+              <li>`data/clean_transactions_data.csv`: cleaned and engineered dataset with 2,512 rows and 18 columns.</li>
+              <li>`data/clean_transactions_with_flags.csv`: EDA flags added, 2,512 rows and 31 columns.</li>
+              <li>`data/transactions_with_zscores.csv`: z-score features and flags added, 2,512 rows and 47 columns.</li>
+              <li>`data/transactions_with_all_flags_final.csv.csv`: final combined flag dataset, 2,512 rows and 50 columns.</li>
+              <li>`transactions_anomalies_only.csv`: final suspicious transaction extract with 947 rows and 28 columns.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="container contact-panel reveal">
+          <div class="section-heading compact">
+            <p class="eyebrow">Repository</p>
+            <h2 id="contact-title">Project source and portfolio navigation</h2>
+            <p>
+              This page summarizes the project workflow and selected results from
+              the fraud detection repository.
+            </p>
+          </div>
+          <div class="contact-links">
+            <a href="index.html#projects">Portfolio</a>
+            <a href="https://github.com/AFoivos/Fraud-Detection/tree/main" target="_blank" rel="noreferrer">GitHub Repository</a>
+            <a href="mailto:ampatzisfoivos@gmail.com">Email</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>&copy; 2026 Foivos Georgios Ampatzis</p>
+        <div class="footer-links">
+          <a href="index.html#projects">Projects</a>
+          <a href="https://github.com/AFoivos/Fraud-Detection/tree/main" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="mailto:ampatzisfoivos@gmail.com">Email</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
