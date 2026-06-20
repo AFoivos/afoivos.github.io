@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Systematic Trading Framework project details by Foivos Georgios Ampatzis."
+      content="A reproducible, cost-aware, eleven-asset systematic trading strategy built and evaluated with a modular Python research framework."
     />
     <title>Systematic Trading Framework | Foivos Georgios Ampatzis</title>
     <link rel="stylesheet" href="style.css" />
@@ -24,6 +24,7 @@
           <div class="nav-links" id="project-menu">
             <a href="#overview">Overview</a>
             <a href="#results">Results</a>
+            <a href="#robustness">Robustness</a>
             <a href="#diagnostics">Diagnostics</a>
             <a href="#implementation">Implementation</a>
             <a href="#contact">Contact</a>
@@ -37,13 +38,13 @@
         <div class="container detail-hero-grid">
           <div class="reveal">
             <a class="back-link" href="index.html#projects">Back to projects</a>
-            <p class="eyebrow">Quant Research / ML Engineering</p>
+            <p class="eyebrow">Quant Research / Systematic Trading</p>
             <h1 id="project-title">Systematic Trading Framework</h1>
-            <p class="hero-title">Python | ML | Backtesting | Quant</p>
+            <p class="hero-title">Python | Multi-Asset | Backtesting | Risk</p>
             <p class="hero-tagline">
-              A research-first framework for systematic trading experiments,
-              designed around modular features, models, experiments, risk, signals,
-              portfolio construction, monitoring, and execution layers.
+              A reproducible, rules-based portfolio strategy that combines VWAP and
+              EMA root-mean-square crossovers with trend-regime and PPO momentum
+              filters across eleven markets.
             </p>
             <div class="hero-actions" aria-label="Project actions">
               <a class="btn btn-primary" href="https://github.com/AFoivos/systematic_trading_framework/tree/main" target="_blank" rel="noreferrer">View Repository</a>
@@ -52,18 +53,22 @@
           </div>
 
           <aside class="hero-panel reveal" aria-label="Experiment summary">
-            <p class="panel-label">Experiment Snapshot</p>
+            <p class="panel-label">Latest Experiment</p>
             <div class="metric-row">
-              <span>Market / Timeframe</span>
-              <strong>BTCUSD 1H</strong>
+              <span>Universe / Timeframe</span>
+              <strong>11 assets / 30-minute bars</strong>
             </div>
             <div class="metric-row">
-              <span>Model Family</span>
-              <strong>Shock meta XGBoost</strong>
+              <span>Evaluation Window</span>
+              <strong>Jan 2020 – Jun 2026</strong>
             </div>
             <div class="metric-row">
-              <span>Direction</span>
-              <strong>Long-only workflow</strong>
+              <span>Strategy</span>
+              <strong>Rules-only, long-only</strong>
+            </div>
+            <div class="metric-row">
+              <span>Reproducibility</span>
+              <strong>Deterministic run, seed 7</strong>
             </div>
           </aside>
         </div>
@@ -73,97 +78,212 @@
         <div class="container two-column reveal">
           <div class="section-heading compact">
             <p class="eyebrow">Project Summary</p>
-            <h2 id="summary-title">A modular research pipeline for time-aware strategy evaluation.</h2>
+            <h2 id="summary-title">From signal research to portfolio-level validation.</h2>
           </div>
           <div class="text-panel">
             <p>
-              The framework is built for hypothesis-driven quantitative research:
-              feature engineering, labeling, model experimentation, backtesting,
-              transaction-cost handling, risk logic, signal generation, and portfolio
-              construction are separated into explicit layers.
+              This experiment is a deterministic, rules-only strategy rather than a
+              trained model. A long candidate requires an asset-specific VWAP RMS
+              crossover above an EMA RMS, a bullish medium-versus-slow EMA regime,
+              and positive PPO momentum. Entries are evaluated at the next bar open.
             </p>
             <p>
-              The experiment shown here is a BTCUSD 1H long-only workflow using a
-              shock meta XGBoost setup. The plots are generated report artifacts
-              used to review performance, drawdown, transaction-cost drag, model
-              drivers, signal behavior, and label balance.
+              The portfolio-barrier engine applies asset-specific ATR profit and stop
+              barriers, 0.25% risk per trade, a maximum of three concurrent positions,
+              asset-group concentration limits, and explicit transaction costs and
+              slippage. Results below are historical backtest results, not live trading
+              performance.
             </p>
           </div>
+        </div>
+
+        <div class="container snapshot-list reveal" aria-label="Asset universe">
+          <span>XAUUSD</span>
+          <span>XAGUSD</span>
+          <span>SPX500</span>
+          <span>US100</span>
+          <span>GER40</span>
+          <span>US30</span>
+          <span>BRENT</span>
+          <span>ETHUSD</span>
+          <span>EURUSD</span>
+          <span>NIKKEI225</span>
+          <span>USOIL</span>
         </div>
       </section>
 
       <section class="section-block results-section" id="results" aria-labelledby="results-title">
         <div class="container">
           <div class="section-heading reveal">
-            <p class="eyebrow">Results</p>
-            <h2 id="results-title">Performance, risk, and cost behavior</h2>
+            <p class="eyebrow">Backtest Results</p>
+            <h2 id="results-title">Net performance after modeled costs and slippage</h2>
             <p>
-              The first group of charts focuses on equity progression, gross versus
-              net returns, drawdown behavior, and the cumulative impact of costs.
+              The portfolio generated 786 completed trades over the evaluation window.
+              Metrics use 30-minute annualization and include 1.5 bps transaction cost
+              plus 1 bp slippage per unit of turnover.
             </p>
+          </div>
+
+          <div class="metrics-grid reveal" aria-label="Key performance metrics">
+            <article class="metric-card">
+              <span>Cumulative Return</span>
+              <strong>77.52%</strong>
+            </article>
+            <article class="metric-card">
+              <span>Annualized Return</span>
+              <strong>11.10%</strong>
+            </article>
+            <article class="metric-card">
+              <span>Sharpe Ratio</span>
+              <strong>2.76</strong>
+            </article>
+            <article class="metric-card">
+              <span>Maximum Drawdown</span>
+              <strong>−2.93%</strong>
+            </article>
+            <article class="metric-card">
+              <span>Profit Factor</span>
+              <strong>1.62</strong>
+            </article>
+            <article class="metric-card">
+              <span>Completed Trades</span>
+              <strong>786</strong>
+            </article>
           </div>
 
           <div class="chart-grid">
             <figure class="chart-card chart-card-wide reveal">
-              <img src="assets/systematic-trading-framework/equity_curve.png" alt="Equity curve for the systematic trading framework experiment" />
-              <figcaption>Equity curve used to inspect capital progression through the experiment window.</figcaption>
+              <img src="assets/systematic-trading-framework/equity_curve.png" alt="Net equity curve for the eleven-asset systematic trading strategy from 2020 to 2026" />
+              <figcaption>Net equity progression across the full eleven-asset portfolio.</figcaption>
             </figure>
 
             <figure class="chart-card reveal">
-              <img src="assets/systematic-trading-framework/cumulative_returns.png" alt="Cumulative gross versus net returns chart" />
-              <figcaption>Gross versus net cumulative returns, showing the effect of costs on realized performance.</figcaption>
+              <img src="assets/systematic-trading-framework/cumulative_returns.png" alt="Cumulative gross and net portfolio returns" />
+              <figcaption>Gross versus net cumulative returns, keeping implementation drag visible.</figcaption>
             </figure>
 
             <figure class="chart-card reveal">
-              <img src="assets/systematic-trading-framework/drawdown_curve.png" alt="Drawdown curve for the strategy experiment" />
-              <figcaption>Drawdown curve used to evaluate risk, underwater periods, and recovery behavior.</figcaption>
+              <img src="assets/systematic-trading-framework/drawdown_curve.png" alt="Drawdown curve for the eleven-asset strategy" />
+              <figcaption>Portfolio drawdown path; the worst observed drawdown was 2.93%.</figcaption>
             </figure>
 
-            <figure class="chart-card reveal">
-              <img src="assets/systematic-trading-framework/cumulative_cost_drag.png" alt="Cumulative cost drag chart" />
-              <figcaption>Cumulative cost drag, included to keep transaction-cost impact explicit in the review.</figcaption>
-            </figure>
-
-            <figure class="chart-card reveal">
-              <img src="assets/systematic-trading-framework/monthly_returns.png" alt="Monthly gross versus net returns chart" />
-              <figcaption>Monthly gross versus net returns for a compact view of period-level contribution.</figcaption>
+            <figure class="chart-card chart-card-wide reveal">
+              <img src="assets/systematic-trading-framework/monthly_returns.png" alt="Monthly gross and net returns for the strategy" />
+              <figcaption>Monthly gross and net returns used to inspect performance consistency over time.</figcaption>
             </figure>
           </div>
         </div>
       </section>
 
-      <section class="section-block" id="diagnostics" aria-labelledby="diagnostics-title">
+      <section class="section-block" id="robustness" aria-labelledby="robustness-title">
         <div class="container">
           <div class="section-heading reveal">
-            <p class="eyebrow">Diagnostics</p>
-            <h2 id="diagnostics-title">Model drivers, labels, and trading behavior</h2>
+            <p class="eyebrow">Robustness</p>
+            <h2 id="robustness-title">Cost, latency, gap, and walk-forward stress tests</h2>
             <p>
-              Diagnostics focus on whether the experiment is interpretable enough
-              to review: feature importance, out-of-sample label balance, signal
-              turnover, and rolling behavior are treated as part of the research
-              artifact, not as afterthoughts.
+              The strategy remained profitable under doubled and tripled modeled costs,
+              delayed entries, and a gap-penalty scenario. Seven annual walk-forward
+              folds were positive; these checks reduce, but do not eliminate, selection
+              and overfitting risk.
+            </p>
+          </div>
+
+          <div class="table-card reveal">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Scenario</th>
+                    <th scope="col">Cumulative return</th>
+                    <th scope="col">Sharpe</th>
+                    <th scope="col">Max drawdown</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Base costs</td>
+                    <td>77.52%</td>
+                    <td>2.76</td>
+                    <td>−2.93%</td>
+                  </tr>
+                  <tr>
+                    <td>2× costs</td>
+                    <td>50.31%</td>
+                    <td>1.95</td>
+                    <td>−3.47%</td>
+                  </tr>
+                  <tr>
+                    <td>3× costs</td>
+                    <td>27.26%</td>
+                    <td>1.14</td>
+                    <td>−4.00%</td>
+                  </tr>
+                  <tr>
+                    <td>1-bar entry delay</td>
+                    <td>53.50%</td>
+                    <td>2.06</td>
+                    <td>−3.69%</td>
+                  </tr>
+                  <tr>
+                    <td>2-bar entry delay</td>
+                    <td>45.34%</td>
+                    <td>1.78</td>
+                    <td>−3.82%</td>
+                  </tr>
+                  <tr>
+                    <td>Gap stress</td>
+                    <td>43.27%</td>
+                    <td>1.70</td>
+                    <td>−3.74%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="metrics-grid reveal" aria-label="Walk-forward diagnostics">
+            <article class="metric-card">
+              <span>Positive Folds</span>
+              <strong>7 / 7</strong>
+            </article>
+            <article class="metric-card">
+              <span>Mean Fold Sharpe</span>
+              <strong>2.75</strong>
+            </article>
+            <article class="metric-card">
+              <span>Worst Fold Drawdown</span>
+              <strong>−2.65%</strong>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block results-section" id="diagnostics" aria-labelledby="diagnostics-title">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Portfolio Diagnostics</p>
+            <h2 id="diagnostics-title">Costs, rolling P&amp;L, and capital exposure</h2>
+            <p>
+              Modeled costs consumed 22.35% of gross P&amp;L, so cost attribution is
+              treated as a first-class diagnostic. Average gross exposure was 12.39%,
+              with portfolio and asset-group constraints applied when signals overlapped.
             </p>
           </div>
 
           <div class="chart-grid">
             <figure class="chart-card chart-card-wide reveal">
-              <img src="assets/systematic-trading-framework/feature_importance.png" alt="Feature importance chart for the XGBoost experiment" />
-              <figcaption>Feature importance review for the shock meta XGBoost experiment.</figcaption>
+              <img src="assets/systematic-trading-framework/rolling_pnl.png" alt="Rolling 48-bar gross and net profit and loss with cost drag" />
+              <figcaption>Rolling 48-bar gross and net P&amp;L with the corresponding cost drag.</figcaption>
             </figure>
 
             <figure class="chart-card reveal">
-              <img src="assets/systematic-trading-framework/label_distribution.png" alt="Out-of-sample label distribution chart" />
-              <figcaption>Out-of-sample label distribution, used to inspect class balance and target structure.</figcaption>
-            </figure>
-
-            <figure class="chart-card reveal">
-              <img src="assets/systematic-trading-framework/positions_turnover.png" alt="Signal and turnover path chart" />
-              <figcaption>Signal and turnover path, useful for checking position churn and trading frequency.</figcaption>
+              <img src="assets/systematic-trading-framework/cumulative_cost_drag.png" alt="Cumulative transaction cost and slippage drag" />
+              <figcaption>Cumulative implementation drag from explicit transaction cost and slippage assumptions.</figcaption>
             </figure>
 
             <figure class="chart-card chart-card-wide reveal">
-              <img src="assets/systematic-trading-framework/rolling_behavior.png" alt="Rolling behavior chart for mean absolute signal and turnover" />
-              <figcaption>Rolling signal and turnover behavior for stability and regime review.</figcaption>
+              <img src="assets/systematic-trading-framework/portfolio_exposures.png" alt="Gross and net exposure of the long-only portfolio" />
+              <figcaption>Gross and net exposure through time; both coincide because the strategy is long-only.</figcaption>
             </figure>
           </div>
         </div>
@@ -173,14 +293,15 @@
         <div class="container two-column reveal">
           <div class="section-heading compact">
             <p class="eyebrow">Implementation</p>
-            <h2 id="implementation-title">Design decisions emphasized by the framework.</h2>
+            <h2 id="implementation-title">Research controls built into the workflow.</h2>
           </div>
           <div class="text-panel">
             <ul class="info-list">
-              <li>Modular layers for features, models, experiments, backtesting, risk, signals, portfolio construction, monitoring, and execution.</li>
-              <li>Time-aware evaluation with walk-forward logic, out-of-sample testing, purged split support, and transaction-cost-aware backtesting.</li>
-              <li>Unified experimentation workflow for statistical models, machine learning models, deep learning architectures, and reinforcement learning agents.</li>
-              <li>Research artifacts designed to make model behavior, risk, costs, and signal quality reviewable before treating results as meaningful.</li>
+              <li>Point-in-time timestamp normalization, duplicate handling, cached dataset snapshots, and persisted data/config hashes.</li>
+              <li>Next-open entries with bar-level high/low barrier resolution and explicit tie-breaking for ambiguous intrabar exits.</li>
+              <li>Asset-specific feature windows and ATR barriers, portfolio exposure constraints, group-level position caps, and an 8% kill switch.</li>
+              <li>Strict deterministic execution with a fixed seed and single-threaded runtime for reproducible experiment artifacts.</li>
+              <li>Automated cost, entry-delay, gap, walk-forward, exposure, turnover, and trade-level diagnostics generated with every run.</li>
             </ul>
           </div>
         </div>
@@ -192,8 +313,8 @@
             <p class="eyebrow">Repository</p>
             <h2 id="contact-title">Project source and portfolio navigation</h2>
             <p>
-              This page summarizes one experiment report from the broader framework.
-              The charts are project artifacts, not investment advice.
+              This page presents the latest selected research run from the broader
+              framework. All figures are backtest artifacts and are not investment advice.
             </p>
           </div>
           <div class="contact-links">
