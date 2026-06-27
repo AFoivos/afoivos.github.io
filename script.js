@@ -42,7 +42,13 @@ if ("IntersectionObserver" in window) {
   );
 
   navLinks.forEach((link) => {
-    const section = document.querySelector(link.getAttribute("href"));
+    const href = link.getAttribute("href");
+
+    if (!href?.startsWith("#")) {
+      return;
+    }
+
+    const section = document.querySelector(href);
 
     if (section) {
       sectionObserver.observe(section);

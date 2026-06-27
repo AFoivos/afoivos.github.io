@@ -979,6 +979,57 @@ main > .section-block + .section-block {
   margin-top: 16px;
 }
 
+.legal-layout {
+  max-width: 860px;
+}
+
+.legal-layout h1 {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 3.2rem;
+  line-height: 1.05;
+}
+
+.legal-updated {
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.legal-card {
+  max-width: 860px;
+  padding: 34px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.legal-card h2 {
+  margin: 34px 0 0;
+  color: var(--text-strong);
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.legal-card h2:first-child {
+  margin-top: 0;
+}
+
+.legal-card p {
+  margin: 12px 0 0;
+  color: var(--text);
+}
+
+.legal-card a {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.legal-card a:hover,
+.legal-card a:focus {
+  color: var(--accent-strong);
+}
+
 .table-card table {
   width: 100%;
   border-collapse: collapse;
@@ -1269,6 +1320,10 @@ main > .section-block + .section-block {
     font-size: 2.35rem;
   }
 
+  .legal-layout h1 {
+    font-size: 2.35rem;
+  }
+
   .hero-title {
     font-size: 1.12rem;
   }
@@ -1319,6 +1374,7 @@ main > .section-block + .section-block {
   .process-card,
   .code-card,
   .table-card,
+  .legal-card,
   .metric-card,
   .contact-card,
   .contact-panel,
