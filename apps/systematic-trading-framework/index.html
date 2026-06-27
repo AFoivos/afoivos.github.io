@@ -3,104 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../style.css" />
-    <script src="../../script.js" defer></script>
     <meta name="description" content="Systematic Trading Framework is a private MCP-based developer tool that lets ChatGPT inspect a user-mounted local systematic trading repository." />
     <title>Systematic Trading Framework MCP App</title>
+
+    <style>
+      :root { color-scheme: dark; --bg: #0f141c; --panel: #151c26; --text: #eef3f8; --muted: #aeb8c4; --line: #263241; --accent: #6ee7b7; }
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover, a:focus { text-decoration: underline; }
+      .wrap { width: min(1040px, calc(100% - 40px)); margin: 0 auto; }
+      header { border-bottom: 1px solid var(--line); background: rgba(15, 20, 28, 0.96); }
+      nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+      .logo { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 8px; color: var(--text); font-weight: 800; }
+      .links { display: flex; gap: 22px; flex-wrap: wrap; }
+      .links a { color: var(--muted); font-weight: 700; }
+      main { padding: 56px 0 72px; }
+      .hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.7fr); gap: 28px; align-items: start; margin-bottom: 36px; }
+      .eyebrow { color: var(--accent); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 10px; }
+      h1 { font-size: clamp(2.2rem, 5vw, 4.6rem); line-height: 1; margin: 0 0 16px; }
+      h2 { font-size: 1.45rem; margin: 34px 0 10px; }
+      p { color: var(--muted); margin: 0 0 16px; }
+      .lead { font-size: 1.15rem; max-width: 760px; }
+      .panel, .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 24px; }
+      .row { display: flex; justify-content: space-between; gap: 20px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+      .row:last-child { border-bottom: 0; }
+      .row span { color: var(--muted); }
+      .row strong { text-align: right; }
+      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin: 24px 0; }
+      ul { color: var(--muted); padding-left: 22px; }
+      li { margin: 8px 0; }
+      footer { border-top: 1px solid var(--line); padding: 24px 0; color: var(--muted); }
+      .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+      @media (max-width: 760px) { .hero, .grid { grid-template-columns: 1fr; } nav { align-items: flex-start; flex-direction: column; padding: 18px 0; } main { padding-top: 36px; } }
+    </style>
   </head>
   <body>
-    <header class="site-header">
-      <nav class="nav container" aria-label="Systematic Trading Framework app navigation">
-        <a class="nav-logo" href="../../index.html" aria-label="Back to portfolio home">FGA</a>
-        <div class="nav-actions">
-          <button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="app-menu">
-            <span></span><span></span><span></span>
-          </button>
-          <div class="nav-links" id="app-menu">
-            <a href="index.html">App</a>
-            <a href="privacy.html">Privacy</a>
-            <a href="terms.html">Terms</a>
-            <a href="mailto:ampatzisfoivos@gmail.com">Support</a>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <main id="top">
-      <section class="detail-hero section-block" aria-labelledby="app-title">
-        <div class="container detail-hero-grid">
-          <div class="reveal">
-            <p class="eyebrow">ChatGPT App / MCP Developer Tool</p>
-            <h1 id="app-title">Systematic Trading Framework</h1>
-            <p class="hero-title">Inspect trading research repositories safely</p>
-            <p class="hero-tagline">
-              Systematic Trading Framework is a private, local MCP-based developer tool that lets ChatGPT inspect and analyze a user-mounted systematic trading repository through bounded repository tools.
-            </p>
-            <div class="hero-actions" aria-label="App links">
-              <a class="btn btn-primary" href="privacy.html">Privacy Policy</a>
-              <a class="btn btn-secondary" href="terms.html">Terms of Service</a>
-            </div>
-          </div>
-          <aside class="hero-panel reveal" aria-label="App summary">
-            <p class="panel-label">App Scope</p>
-            <div class="metric-row"><span>Access model</span><strong>User-mounted repository only</strong></div>
-            <div class="metric-row"><span>Primary use</span><strong>Private development support</strong></div>
-            <div class="metric-row"><span>Trading actions</span><strong>No live trades or broker orders</strong></div>
-            <div class="metric-row"><span>Commerce</span><strong>No products or digital goods sold</strong></div>
-          </aside>
-        </div>
-      </section>
-
-      <section class="section-block" aria-labelledby="what-it-does">
-        <div class="container two-column reveal">
-          <div class="section-heading compact">
-            <p class="eyebrow">Capabilities</p>
-            <h2 id="what-it-does">What the app does</h2>
-          </div>
-          <div class="text-panel">
-            <p>
-              The app exposes safe MCP tools for reading and understanding a repository explicitly mounted by the user. It supports file reads, directory listings, code search, symbol search, reference lookup, project tree inspection, git status and diff review, configuration and log reading, experiment artifact review, and Optuna SQLite database inspection.
-            </p>
-            <p>
-              The server is intended for local and private development workflows. It is designed to avoid access outside the mounted repository and should not be configured to expose a user's home directory or whole computer.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-block results-section" aria-labelledby="safety-title">
-        <div class="container">
-          <div class="section-heading reveal">
-            <p class="eyebrow">Safety Boundaries</p>
-            <h2 id="safety-title">Designed for repository inspection, not trading execution</h2>
-          </div>
-          <div class="metrics-grid reveal">
-            <article class="metric-card"><span>No financial advice</span><strong>Research support only</strong></article>
-            <article class="metric-card"><span>No live trading</span><strong>No broker orders</strong></article>
-            <article class="metric-card"><span>No resale of data</span><strong>No data sales</strong></article>
-            <article class="metric-card"><span>Execution controls</span><strong>User confirmation required</strong></article>
-          </div>
-          <div class="legal-card reveal">
-            <h2>Supported workflows</h2>
-            <ul class="info-list">
-              <li>Inspect source files, Markdown documentation, notebooks, YAML, JSON, TOML, CSV, SQL, Docker files, and logs.</li>
-              <li>Search repository content and find code symbols or references.</li>
-              <li>Review git status, current branch, diffs, and recent commit history.</li>
-              <li>Read experiment results, configuration files, logs, and Optuna SQLite databases.</li>
-              <li>Run only approved repository Python scripts when the user explicitly confirms execution.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer class="footer">
-      <div class="container footer-inner">
-        <p>&copy; 2026 Foivos Georgios Ampatzis</p>
-        <div class="footer-links" aria-label="Footer legal links">
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
-          <a href="mailto:ampatzisfoivos@gmail.com">Support</a>
-        </div>
-      </div>
-    </footer>
+    <header><nav class="wrap"><a class="logo" href="../../index.html" aria-label="Back to portfolio home">FGA</a><div class="links"><a href="index.html">App</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="mailto:ampatzisfoivos@gmail.com">Support</a></div></nav></header>
+    <main><div class="wrap"><section class="hero"><div><p class="eyebrow">ChatGPT App / MCP Developer Tool</p><h1>Systematic Trading Framework</h1><p class="lead">Systematic Trading Framework is a private, local MCP-based developer tool that lets ChatGPT inspect and analyze a user-mounted systematic trading repository through bounded repository tools.</p></div><aside class="panel"><div class="row"><span>Access model</span><strong>User-mounted repository only</strong></div><div class="row"><span>Primary use</span><strong>Private development support</strong></div><div class="row"><span>Trading actions</span><strong>No live trades or broker orders</strong></div><div class="row"><span>Commerce</span><strong>No products or digital goods sold</strong></div></aside></section><section class="card"><h2>What the app does</h2><p>The app exposes safe MCP tools for reading and understanding a repository explicitly mounted by the user. It supports file reads, directory listings, code search, symbol search, reference lookup, project tree inspection, git status and diff review, configuration and log reading, experiment artifact review, and Optuna SQLite database inspection.</p><p>The server is intended for local and private development workflows. It is designed to avoid access outside the mounted repository and should not be configured to expose a user's home directory or whole computer.</p><div class="grid"><div class="panel"><h2>No financial advice</h2><p>Research and development support only.</p></div><div class="panel"><h2>No live trading</h2><p>No broker orders or trade execution.</p></div><div class="panel"><h2>No data resale</h2><p>No sale of personal or repository data.</p></div><div class="panel"><h2>Execution controls</h2><p>Allowlisted script execution requires explicit user confirmation.</p></div></div><h2>Supported workflows</h2><ul><li>Inspect source files, Markdown documentation, notebooks, YAML, JSON, TOML, CSV, SQL, Docker files, and logs.</li><li>Search repository content and find code symbols or references.</li><li>Review git status, current branch, diffs, and recent commit history.</li><li>Read experiment results, configuration files, logs, and Optuna SQLite databases.</li><li>Run only approved repository Python scripts when the user explicitly confirms execution.</li></ul></section></div></main>
+    <footer><div class="wrap footer-inner"><span>&copy; 2026 Foivos Georgios Ampatzis</span><span><a href="privacy.html">Privacy</a> &nbsp; <a href="terms.html">Terms</a> &nbsp; <a href="mailto:ampatzisfoivos@gmail.com">Support</a></span></div></footer>
   </body>
 </html>
